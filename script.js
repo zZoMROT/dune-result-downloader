@@ -28,11 +28,15 @@ async function start () {
             const tx = {}
             for (const [index, td] of [...tr.children].entries()) {
                 for (const key of td.children) {
-                    if (key.querySelector('div') == null) {
-                        tx[params[index]] = key.innerHTML;
+                    if (key.querySelector('div') !== null) {
+                        tx[params[index]] = key.querySelector('div').innerHTML;
                         continue;
                     }
-                    tx[params[index]] = key.querySelector('div').innerHTML;
+                    if (key.querySelector('span') !== null) {
+                        tx[params[index]] = key.querySelector('span').innerHTML;
+                        continue;
+                    }
+                    tx[params[index]] = key.innerHTML;
                 }
             }
             txs.push(tx);
