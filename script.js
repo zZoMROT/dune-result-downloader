@@ -21,7 +21,7 @@ async function start () {
 
         const params = []
         for (const th of tr.children) {
-            params.push(th.querySelector('div').innerHTML)
+            params.push(th.querySelector('button').innerHTML)
         }
 
         for (const tr of tbody.children) {
